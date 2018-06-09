@@ -17,4 +17,6 @@ const cli = meow(`
 	  ponies & rainbows
 `);
 
-console.log(freeSpace(cli.input[0] || 'unicorns'));
+freeSpace(cli.input[0] || 'unicorns')
+.then(() => console.log('complete'))
+.catch(err => console.log(err))
