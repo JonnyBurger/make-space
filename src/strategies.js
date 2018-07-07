@@ -23,18 +23,6 @@ module.exports = [
 		command: () => `${os.homedir()}/.Trash`
 	},
 	{
-		name: 'brew cleanup',
-		key: 'brew-cleanup',
-		probe: async () => {
-			const {stdout} = await execa('brew', ['cleanup', '-n']);
-			const match = stdout.match(
-				/free approximately ([0-9A-Z\.]+) of disk space/
-			);
-			return bytes.parse(match[1]) / 1.024;
-		},
-		command: () => 'brew cleanup'
-	},
-	{
 		name: 'Delete Xcode Derived Data',
 		key: 'xcode-deriveddata',
 		probe: () =>
@@ -69,5 +57,37 @@ module.exports = [
 			return space * 1024;
 		},
 		command: () => 'rm -rf ~/Downloads/*.dmg'
+	},
+	{
+		name: 'Delete dangling Docker images',
+		key: 'docker-dangling',
+		probe: async () => {
+			const {stdout} = await execa('docker', [
+				'images',
+				'--filter',
+				'dangling=true'
+			]);
+			const [, ...images] = stdout.split('\n');
+			const size = images
+				.map(i => {
+					const split = i.split(' ');
+					return split[split.length - 1];
+				})
+				.map(b => bytes.parse(b.toLowerCase()));
+			return size.reduce((a, b) => a + b, 0);
+		},
+		command: () => 'docker rmi $(docker images -f dangling=true -q)'
+	},
+	{
+		name: 'brew cleanup',
+		key: 'brew-cleanup',
+		probe: async () => {
+			const {stdout} = await execa('brew', ['cleanup', '-n']);
+			const match = stdout.match(
+				/free approximately ([0-9A-Z.]+) of disk space/
+			);
+			return bytes.parse(match[1]) / 1.024;
+		},
+		command: () => 'brew cleanup'
 	}
 ];

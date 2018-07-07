@@ -1,14 +1,16 @@
+_BETA NOTICE_: This module is not quite ready. I'm publishing it to reserve the name and to test the `npx` feature.
+
+---
+
 # free-space [![Build Status](https://travis-ci.org/JonnyBurger/free-space.svg?branch=master)](https://travis-ci.org/JonnyBurger/free-space)
 
 > Free up hard disk space
-
 
 ## Install
 
 ```
 $ npm install --save free-space
 ```
-
 
 ## Usage
 
@@ -18,7 +20,6 @@ const freeSpace = require('free-space');
 freeSpace('unicorns');
 //=> 'unicorns & rainbows'
 ```
-
 
 ## API
 
@@ -38,7 +39,6 @@ Type: `boolean`<br>
 Default: `false`
 
 Lorem ipsum.
-
 
 ## CLI
 
@@ -61,7 +61,6 @@ $ free-space --help
     $ free-space ponies
     ponies & rainbows
 ```
-
 
 ## License
 

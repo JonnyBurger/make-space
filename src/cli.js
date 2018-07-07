@@ -18,5 +18,5 @@ const cli = meow(`
 `);
 
 freeSpace(cli.input[0] || 'unicorns')
-.then(() => console.log('complete'))
-.catch(err => console.log(err))
+	.then(() => {})
+	.catch(err => console.log(err));
