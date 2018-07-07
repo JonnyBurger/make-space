@@ -1,6 +1,6 @@
 {
   "name": "more-space",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Free up hard disk space",
   "license": "MIT",
   "repository": "JonnyBurger/free-space",
@@ -20,8 +20,7 @@
     "prepublish": "npm run build"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "dist"
   ],
   "keywords": [
     "cli-app",
