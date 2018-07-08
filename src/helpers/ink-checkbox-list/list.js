@@ -95,7 +95,7 @@ class List extends Component {
 			<span>
 				{props.items.map((item, i) => {
 					return (
-						<span>
+						<span key={item.key}>
 							<Cursor
 								isActive={cursor === i}
 								cursorCharacter={cursorCharacter}

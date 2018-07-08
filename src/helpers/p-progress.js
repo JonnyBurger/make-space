@@ -16,17 +16,6 @@
 */
 
 'use strict';
-const pMap = require('p-map');
-
-const sum = iterable => {
-	let total = 0;
-
-	for (const value of iterable.values()) {
-		total += value;
-	}
-
-	return total;
-};
 
 class PProgress extends Promise {
 	static fn(input) {

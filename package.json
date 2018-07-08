@@ -14,7 +14,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && ava",
+    "test": "eslint '**/*.js' --ignore-path=.gitignore && ava",
     "start": "npm run build && node dist/cli.js",
     "build": "babel src -d dist",
     "prepublish": "npm run build"
@@ -49,10 +49,11 @@
     "splitargs": "0.0.7"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "xo": "^0.17.0"
+    "eslint": "^5.1.0",
+    "eslint-plugin-react": "^7.10.0"
   },
   "babel": {
     "plugins": [

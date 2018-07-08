@@ -1,9 +1,8 @@
-import test from 'ava';
-import fn from '.';
+const test = require('ava');
+const {uniq} = require('lodash');
+const strategies = require('./src/strategies');
 
-test('title', t => {
-	const err = t.throws(() => fn(123), TypeError);
-	t.is(err.message, 'Expected a string, got number');
-
-	t.is(fn('unicorns'), 'unicorns & rainbows');
+test('All strategies should have a unique key', t => {
+	const keys = Object.keys(strategies);
+	t.is(keys.length, uniq(keys).length);
 });

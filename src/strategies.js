@@ -1,27 +1,12 @@
 const os = require('os');
 const execa = require('execa');
 const bytes = require('bytes');
-const glob = require('glob');
 const PProgress = require('./helpers/p-progress');
 const getFolderSize = require('./helpers/get-folder-size');
 const brewCleanup = require('./strategies/brew-cleanup');
 const dmgDownloads = require('./strategies/dmg-downloads');
 
 module.exports = [
-	dmgDownloads,
-	brewCleanup,
-	{
-		name: 'Empty trash',
-		key: 'empty-trash',
-		probe: () => getFolderSize(`${os.homedir()}/.Trash`),
-		command: `rm -rfv ${os.homedir()}/.Trash`
-	},
-	{
-		name: 'Random command, should fail',
-		key: 'test-fail',
-		command: 'fsdfdsfds',
-		probe: () => getFolderSize(`fskajdölfjdslakfjdas`)
-	},
 	{
 		name: 'Delete Xcode Derived Data',
 		key: 'xcode-deriveddata',
@@ -54,6 +39,20 @@ module.exports = [
 		command: 'rm -rfv ~/Library/Caches/Adobe/Premiere Pro',
 		probe: () =>
 			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/Premiere Pro`)
+	},
+	dmgDownloads,
+	brewCleanup,
+	{
+		name: 'Empty trash',
+		key: 'empty-trash',
+		probe: () => getFolderSize(`${os.homedir()}/.Trash`),
+		command: `rm -rfv ${os.homedir()}/.Trash`
+	},
+	{
+		name: 'Random command, should fail',
+		key: 'test-fail',
+		command: 'fsdfdsfds',
+		probe: () => getFolderSize(`fskajdölfjdslakfjdas`)
 	},
 	{
 		name: 'Clear After Effects disk cache',

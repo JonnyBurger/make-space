@@ -1,6 +1,5 @@
 const rl = require('readline');
 const execa = require('execa');
-const {last} = require('lodash');
 const PProgress = require('./p-progress');
 
 const getSize = number => {
