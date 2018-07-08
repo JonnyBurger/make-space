@@ -5,15 +5,15 @@ const freeSpace = require('.');
 
 const cli = meow(`
 	Usage
-	  $ free-space [input]
+	  $ more-space [input]
 
 	Options
 	  --foo  Lorem ipsum [Default: false]
 
 	Examples
-	  $ free-space
+	  $ more-space
 	  unicorns & rainbows
-	  $ free-space ponies
+	  $ more-space ponies
 	  ponies & rainbows
 `);
 

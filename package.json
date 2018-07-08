@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Free up hard disk space",
   "license": "MIT",
-  "repository": "JonnyBurger/free-space",
+  "repository": "JonnyBurger/more-space",
   "author": {
     "name": "Jonny Burger",
     "email": "jonathanburger11@gmail.com",
@@ -29,24 +29,23 @@
   ],
   "dependencies": {
     "@jonny/ink-checkbox-list": "^1.3.1",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
     "bytes": "^3.0.0",
     "chalk": "^2.4.1",
     "execa": "^0.10.0",
     "ink": "^0.5.0",
     "ink-spinner": "^2.0.0",
     "inquirer": "^6.0.0",
-    "left-pad": "^1.3.0",
     "lodash": "^4.17.10",
     "meow": "^3.7.0",
-    "p-progress": "^0.1.1",
+    "p-map": "^1.2.0",
     "percentage": "^0.1.0",
     "pretty-bytes": "^5.1.0",
     "react": "^16.4.0"
   },
   "devDependencies": {
     "ava": "^0.17.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "xo": "^0.17.0"
   },
   "babel": {
