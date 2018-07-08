@@ -1,5 +1,5 @@
 const {h, Component, Color, Fragment, Underline} = require('ink');
-const {max, padStart, padEnd} = require('lodash');
+const {max, padStart, padEnd, sum} = require('lodash');
 const {List, ListItem} = require('@jonny/ink-checkbox-list');
 const Spinner = require('ink-spinner');
 const prettyBytes = require('pretty-bytes');
@@ -27,11 +27,12 @@ class Strategy extends Component {
 			let probing = this.props.strategy.probe();
 			if (probing.onProgress) {
 				probing = probing.onProgress(size => {
+					this.props.onProgress(size);
 					this.setState({size});
 				});
 			}
 			const size = await probing;
-			this.props.onFinish();
+			this.props.onFinish(size);
 			this.setState({size, final: true});
 		} catch (err) {
 			console.log(err);
@@ -86,11 +87,15 @@ class Ui extends Component {
 	get nameWidth() {
 		return max(this.state.strategies.map(s => s.name.length));
 	}
+	get totalPotential() {
+		return sum(this.tasks.map(s => s.size));
+	}
 	render() {
 		return (
 			<Fragment>
 				<div />
-				Welcome to <Underline>more-space</Underline>! Here are some ideas:
+				Welcome to <Underline>more-space</Underline>! You can save up to{' '}
+				<Color blue>{prettyBytes(this.totalPotential)}</Color>:
 				<div />
 				<div />
 				<List onSubmit={() => {}}>
@@ -99,14 +104,28 @@ class Ui extends Component {
 							<ListItem key={strategy.key} value={strategy.key}>
 								<Strategy
 									strategy={strategy}
-									onFinish={() => {
+									onFinish={size => {
 										this.setState({
 											progress: Object.assign({}, this.state.progress, {
 												[strategy.key]: Object.assign(
 													{},
 													this.state.progress[strategy.key],
 													{
-														final: true
+														final: true,
+														size
+													}
+												)
+											})
+										});
+									}}
+									onProgress={size => {
+										this.setState({
+											progress: Object.assign({}, this.state.progress, {
+												[strategy.key]: Object.assign(
+													{},
+													this.state.progress[strategy.key],
+													{
+														size
 													}
 												)
 											})
