@@ -9,14 +9,38 @@ const getSize = number => {
 
 module.exports = (dir, {filter = Boolean} = {}) => {
 	return new PProgress((resolve, reject, progress) => {
+		let cleanup = null;
+		let interval = null;
+		let reader = null;
+		let spawned = null;
 		try {
-			const {stdout, stderr} = execa('du', ['-ak', dir]);
-			const reader = rl.createInterface(stdout);
-			const errOutput = [];
+			spawned = execa('du', ['-ak', dir]);
+
+			const killHandler = (ch, key) => {
+				if (key.name === 's') {
+					spawned.kill();
+					reject('Stopped');
+					cleanup();
+				}
+			};
+			cleanup = () => {
+				process.stdin.removeListener('keypress', killHandler);
+				if (interval) {
+					clearInterval(interval);
+				}
+				if (reader) {
+					reader.removeAllListeners();
+				}
+				if (spawned && spawned.stderr) {
+					spawned.stderr.removeAllListeners();
+				}
+			};
+			process.stdin.on('keypress', killHandler);
+
+			reader = rl.createInterface(spawned.stdout);
 			let isRejected = false;
-			stderr.on('data', data => {
+			spawned.stderr.on('data', data => {
 				const string = data.toString();
-				errOutput.push(string);
 				if (!isRejected) {
 					if (string.match(/No such file/)) {
 						reject("Directory doesn't exist");
@@ -24,13 +48,15 @@ module.exports = (dir, {filter = Boolean} = {}) => {
 						reject(string);
 					}
 					isRejected = true;
+					cleanup();
 				}
 			});
 			let size = 0;
 			let lastPath = '';
-			stderr.on('close', () => {
+			spawned.stderr.on('close', () => {
 				if (!isRejected) {
 					resolve(size);
+					cleanup();
 				}
 			});
 			reader.on('line', data => {
@@ -42,14 +68,14 @@ module.exports = (dir, {filter = Boolean} = {}) => {
 					lastPath = path;
 				}
 			});
-			let interval = setInterval(() => {
+			interval = setInterval(() => {
 				progress(size);
 			}, 100);
-			reader.on('close', () => {
-				clearInterval(interval);
-			});
 		} catch (err) {
 			reject(err);
+			if (cleanup) {
+				cleanup();
+			}
 		}
 	});
 };

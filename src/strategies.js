@@ -10,7 +10,7 @@ module.exports = [
 		name: 'Empty trash',
 		key: 'empty-trash',
 		probe: () => getFolderSize(`${os.homedir()}/.Trash`),
-		command: () => `${os.homedir()}/.Trash`
+		command: () => `rm -rf ${os.homedir()}/.Trash`
 	},
 	{
 		name: 'Random command, should fail',
