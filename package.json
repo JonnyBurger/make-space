@@ -1,9 +1,9 @@
 {
-  "name": "more-space",
+  "name": "make-space",
   "version": "0.1.6",
   "description": "Free up hard disk space",
   "license": "MIT",
-  "repository": "JonnyBurger/more-space",
+  "repository": "JonnyBurger/make-space",
   "author": {
     "name": "Jonny Burger",
     "email": "jonathanburger11@gmail.com",

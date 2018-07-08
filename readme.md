@@ -2,20 +2,20 @@ _BETA NOTICE_: This module is not quite ready. I'm publishing it to reserve the 
 
 ---
 
-# more-space [![Build Status](https://travis-ci.org/JonnyBurger/more-space.svg?branch=master)](https://travis-ci.org/JonnyBurger/more-space)
+# make-space [![Build Status](https://travis-ci.org/JonnyBurger/make-space.svg?branch=master)](https://travis-ci.org/JonnyBurger/make-space)
 
 > Free up hard disk space
 
 ## Install
 
 ```
-$ npm install --save more-space
+$ npm install --save make-space
 ```
 
 ## Usage
 
 ```js
-const freeSpace = require('more-space');
+const freeSpace = require('make-space');
 
 freeSpace('unicorns');
 //=> 'unicorns & rainbows'
@@ -43,22 +43,22 @@ Lorem ipsum.
 ## CLI
 
 ```
-$ npm install --global more-space
+$ npm install --global make-space
 ```
 
 ```
-$ more-space --help
+$ make-space --help
 
   Usage
-    more-space [input]
+    make-space [input]
 
   Options
     --foo  Lorem ipsum [Default: false]
 
   Examples
-    $ more-space
+    $ make-space
     unicorns & rainbows
-    $ more-space ponies
+    $ make-space ponies
     ponies & rainbows
 ```
 
