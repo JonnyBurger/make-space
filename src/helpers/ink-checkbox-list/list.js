@@ -18,14 +18,6 @@ class List extends Component {
 		return this.state.cursor;
 	}
 
-	get childValues() {
-		const {items} = this.props;
-		const filteredItems = items.filter((_, i) =>
-			this.state.checked.includes(i)
-		);
-		return filteredItems.map(child => child.content.props.value);
-	}
-
 	componentDidMount() {
 		stdin.on('keypress', this.handleKeyPress);
 	}
@@ -66,7 +58,7 @@ class List extends Component {
 		this.setState({cursor: -1});
 		stdin.removeListener('keypress', this.handleKeyPress);
 		if (this.props.onSubmit) {
-			this.props.onSubmit(this.childValues);
+			this.props.onSubmit();
 		}
 	}
 
@@ -83,9 +75,6 @@ class List extends Component {
 			}
 			case 'space': {
 				this.toggleCurrentCursor();
-				if (this.props.onChange) {
-					this.props.onChange(this.childValues);
-				}
 				break;
 			}
 			case 'return': {

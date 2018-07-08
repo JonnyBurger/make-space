@@ -1,98 +1,24 @@
-const {h, Component, Color, Fragment, Underline} = require('ink');
-const {max, padStart, padEnd, sum, sortBy} = require('lodash');
-const figures = require('figures');
+const {h, Component, Fragment, Color} = require('ink');
+const {sum, max} = require('lodash');
+const Gradient = require('ink-gradient');
 const Spinner = require('ink-spinner');
+const figures = require('figures');
 const prettyBytes = require('pretty-bytes');
-const strategies = require('./strategies');
-const List = require('./helpers/ink-checkbox-list/list');
-const ListItem = require('./helpers/ink-checkbox-list/list-item');
+const execute = require('../execute');
+const strategies = require('../strategies');
+const List = require('../helpers/ink-checkbox-list/list');
+const ListItem = require('../helpers/ink-checkbox-list/list-item');
+const Strategy = require('./strategy');
 
-class Strategy extends Component {
-	componentDidMount() {
-		if (this.props.mayStart && !this.progress.started) {
-			this.probe();
-		}
-	}
-	async probe() {
-		try {
-			this.props.onStart();
-			let probing = this.props.strategy.probe();
-			if (probing.onProgress) {
-				probing = probing.onProgress(size => {
-					this.props.onProgress(size);
-				});
-			}
-			const size = await probing;
-			this.props.onFinish(size);
-		} catch (err) {
-			this.props.onError(err);
-		}
-	}
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.mayStart && !this.progress.started) {
-			this.probe();
-		}
-	}
-	get progress() {
-		return (
-			this.props.progress || {
-				started: false,
-				size: 0,
-				err: null,
-				final: false
-			}
-		);
-	}
-	render() {
-		return (
-			<Fragment>
-				{this.progress.started && !this.progress.final ? (
-					<Fragment>
-						<Spinner gray />
-					</Fragment>
-				) : (
-					<span> </span>
-				)}
-				{this.progress.size ? (
-					<Color
-						gray={!this.progress.final || this.progress.err}
-						blue={this.progress.final && !this.progress.err}
-					>
-						{padStart(prettyBytes(this.progress.size), 9, ' ')}
-					</Color>
-				) : (
-					<Fragment>{' '.repeat(9)}</Fragment>
-				)}
-				{'  '}
-				<Color gray={this.progress.err}>
-					{padEnd(this.props.strategy.name, this.props.nameWidth + 2, ' ')}{' '}
-				</Color>
-				{this.progress.err ? (
-					<Color gray>
-						{(this.progress.err.message || this.progress.err)
-							.toString()
-							.substr(0, 70)
-							.replace(/\n/g, '')}
-					</Color>
-				) : (
-					<span>
-						<Color dim>$</Color>{' '}
-						<Color gray>{this.props.strategy.command()}</Color>
-					</span>
-				)}
-			</Fragment>
-		);
-	}
-}
-
-class Ui extends Component {
+class Main extends Component {
 	constructor() {
 		super();
 		this.state = {
 			strategies,
 			progress: {},
 			stopped: false,
-			checked: []
+			checked: [],
+			submitted: false
 		};
 	}
 	componentDidMount() {
@@ -134,11 +60,23 @@ class Ui extends Component {
 			<Fragment>
 				<div />
 				<div>
-					Welcome to <Underline>more-space</Underline>! You can save up to{' '}
-					<Color blue>{prettyBytes(this.totalPotential)}</Color>.
+					{' '.repeat(2)}
+					<Gradient name="teen">make-space</Gradient>
 				</div>
 				<div>
+					{' '.repeat(2)}
+					You can save up to{' '}
+					{this.doneSearching ? null : (
+						<Color blue>
+							<Spinner />{' '}
+						</Color>
+					)}
+					<Color blue>{prettyBytes(this.totalPotential)}</Color>.
+				</div>
+
+				<div>
 					<span>
+						{' '.repeat(2)}
 						{this.doneSearching ? (
 							<Color gray>
 								({figures.arrowDown} {figures.arrowUp}) Move up / down
@@ -169,7 +107,10 @@ class Ui extends Component {
 							});
 						}
 					}}
-					onSubmit={() => {}}
+					onSubmit={() => {
+						global.unmount();
+						execute(this.state.checked);
+					}}
 					items={this.state.strategies.map((strategy, i) => ({
 						disabled:
 							!this.state.progress[strategy.key] ||
@@ -250,4 +191,4 @@ class Ui extends Component {
 	}
 }
 
-module.exports = Ui;
+module.exports = Main;

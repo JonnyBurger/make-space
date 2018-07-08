@@ -1,21 +1,37 @@
 const os = require('os');
 const execa = require('execa');
 const bytes = require('bytes');
+const glob = require('glob');
 const PProgress = require('./helpers/p-progress');
 const getFolderSize = require('./helpers/get-folder-size');
 const brewCleanup = require('./strategies/brew-cleanup');
 
 module.exports = [
 	{
+		name: 'Delete .dmg from Downloads',
+		key: 'dmg-downloads',
+		probe: () =>
+			getFolderSize(`${os.homedir()}/Downloads`, {
+				filter: line => line.endsWith('.dmg')
+			}),
+		command: `rm -rfv ${glob
+			.sync(`${os.homedir()}/Downloads/**/*.dmg`)
+			.concat(glob.sync(`${os.homedir()}/Downloads/*.dmg`))
+			.map(s => `"${s}"`)
+			.join(' ')}`
+	},
+
+	brewCleanup,
+	{
 		name: 'Empty trash',
 		key: 'empty-trash',
 		probe: () => getFolderSize(`${os.homedir()}/.Trash`),
-		command: () => `rm -rf ${os.homedir()}/.Trash`
+		command: `rm -rfv ${os.homedir()}/.Trash`
 	},
 	{
 		name: 'Random command, should fail',
 		key: 'test-fail',
-		command: () => 'fsdfdsfds',
+		command: 'fsdfdsfds',
 		probe: () => getFolderSize(`fskajdölfjdslakfjdas`)
 	},
 	{
@@ -23,13 +39,13 @@ module.exports = [
 		key: 'xcode-deriveddata',
 		probe: () =>
 			getFolderSize(`${os.homedir()}/Library/Developer/Xcode/DerivedData`),
-		command: () => `rm -rf ${os.homedir()}/Library/Developer/Xcode/DerivedData`
+		command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/DerivedData`
 	},
 	{
 		name: 'Delete npm cache',
 		key: 'npm-cache',
 		probe: () => getFolderSize(`${os.homedir()}/.npm`),
-		command: () => `npm cache clean`
+		command: `rm -rfv ${os.homedir()}/.npm`
 	},
 	{
 		name: 'Delete yarn cache',
@@ -42,28 +58,19 @@ module.exports = [
 			});
 			return p;
 		}),
-		command: () => `yarn cache clean`
-	},
-	{
-		name: 'Delete .dmg from Downloads',
-		key: 'dmg-downloads',
-		probe: () =>
-			getFolderSize(`${os.homedir()}/Downloads`, {
-				filter: line => line.endsWith('.dmg')
-			}),
-		command: () => 'rm -rf ~/Downloads/*.dmg'
+		command: `yarn cache clean`
 	},
 	{
 		name: 'Delete Premiere caches',
 		key: 'premiere-cache',
-		command: () => 'rm -rf ~/Library/Caches/Adobe/Premiere Pro',
+		command: 'rm -rfv ~/Library/Caches/Adobe/Premiere Pro',
 		probe: () =>
 			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/Premiere Pro`)
 	},
 	{
 		name: 'Clear After Effects disk cache',
 		key: 'after-effects-caches',
-		command: () => 'rm -rf ~/Library/Caches/Adobe/After Effects',
+		command: 'rm -rfv ~/Library/Caches/Adobe/After Effects',
 		probe: () =>
 			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/After Effects`)
 	},
@@ -85,7 +92,6 @@ module.exports = [
 				.map(b => bytes.parse(b.toLowerCase()));
 			return size.reduce((a, b) => a + b, 0);
 		},
-		command: () => 'docker rmi $(docker images -f dangling=true -q)'
-	},
-	brewCleanup
+		command: 'docker rmi $(docker images -f dangling=true -q)'
+	}
 ];

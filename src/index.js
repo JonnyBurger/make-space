@@ -1,6 +1,6 @@
 const {h, render} = require('ink');
-const Ui = require('./ui');
+const Main = require('./components/main');
 
 module.exports = async () => {
-	render(<Ui />);
+	global.unmount = render(<Main />);
 };

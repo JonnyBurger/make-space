@@ -59,6 +59,9 @@ module.exports = {
 					if (isRejected) {
 						return;
 					}
+					if (lines.length === 0) {
+						return resolve(0);
+					}
 					const match = last(lines).match(
 						/free approximately ([0-9A-Z.]+) of disk space/
 					);
@@ -72,5 +75,5 @@ module.exports = {
 			}
 		});
 	},
-	command: () => 'brew cleanup'
+	command: 'brew cleanup'
 };
