@@ -13,6 +13,12 @@ module.exports = [
 		command: () => `${os.homedir()}/.Trash`
 	},
 	{
+		name: 'Random command, should fail',
+		key: 'test-fail',
+		command: () => 'fsdfdsfds',
+		probe: () => getFolderSize(`fskajdölfjdslakfjdas`)
+	},
+	{
 		name: 'Delete Xcode Derived Data',
 		key: 'xcode-deriveddata',
 		probe: () =>
@@ -46,6 +52,20 @@ module.exports = [
 				filter: line => line.endsWith('.dmg')
 			}),
 		command: () => 'rm -rf ~/Downloads/*.dmg'
+	},
+	{
+		name: 'Delete Premiere caches',
+		key: 'premiere-cache',
+		command: () => 'rm -rf ~/Library/Caches/Adobe/Premiere Pro',
+		probe: () =>
+			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/Premiere Pro`)
+	},
+	{
+		name: 'Clear After Effects disk cache',
+		key: 'after-effects-caches',
+		command: () => 'rm -rf ~/Library/Caches/Adobe/After Effects',
+		probe: () =>
+			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/After Effects`)
 	},
 	{
 		name: 'Delete dangling Docker images',

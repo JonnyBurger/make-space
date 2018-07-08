@@ -15,15 +15,18 @@ class Strategy extends Component {
 		};
 	}
 	componentDidMount() {
-		if (this.props.mayStart) {
+		if (this.props.mayStart && !this.state.started) {
+			this.setState({
+				started: true
+			});
 			this.probe();
 		}
 	}
 	async probe() {
-		this.setState({
-			started: true
-		});
 		try {
+			this.setState({
+				started: true
+			});
 			let probing = this.props.strategy.probe();
 			if (probing.onProgress) {
 				probing = probing.onProgress(size => {
@@ -35,7 +38,11 @@ class Strategy extends Component {
 			this.props.onFinish(size);
 			this.setState({size, final: true});
 		} catch (err) {
-			console.log(err);
+			this.props.onError(err);
+			this.setState({
+				final: true,
+				err
+			});
 		}
 	}
 	componentWillReceiveProps(nextProps) {
@@ -61,8 +68,14 @@ class Strategy extends Component {
 					<Fragment>{' '.repeat(9)}</Fragment>
 				)}
 				{'  '}
-				{padEnd(this.props.strategy.name, this.props.nameWidth + 2, ' ')}{' '}
-				<Color gray>`{this.props.strategy.command()}`</Color>
+				<Color gray={this.state.err}>
+					{padEnd(this.props.strategy.name, this.props.nameWidth + 2, ' ')}{' '}
+				</Color>
+				{this.state.err ? (
+					<Color gray>{this.state.err}</Color>
+				) : (
+					<Color gray>`{this.props.strategy.command()}`</Color>
+				)}
 			</Fragment>
 		);
 	}
@@ -88,7 +101,7 @@ class Ui extends Component {
 		return max(this.state.strategies.map(s => s.name.length));
 	}
 	get totalPotential() {
-		return sum(this.tasks.map(s => s.size));
+		return sum(this.tasks.filter(s => !s.err).map(s => s.size));
 	}
 	render() {
 		return (
@@ -104,6 +117,20 @@ class Ui extends Component {
 							<ListItem key={strategy.key} value={strategy.key}>
 								<Strategy
 									strategy={strategy}
+									onError={err => {
+										this.setState({
+											progress: Object.assign({}, this.state.progress, {
+												[strategy.key]: Object.assign(
+													{},
+													this.state.progress[strategy.key],
+													{
+														final: true,
+														err
+													}
+												)
+											})
+										});
+									}}
 									onFinish={size => {
 										this.setState({
 											progress: Object.assign({}, this.state.progress, {
