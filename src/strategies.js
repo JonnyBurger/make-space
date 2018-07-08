@@ -5,22 +5,10 @@ const glob = require('glob');
 const PProgress = require('./helpers/p-progress');
 const getFolderSize = require('./helpers/get-folder-size');
 const brewCleanup = require('./strategies/brew-cleanup');
+const dmgDownloads = require('./strategies/dmg-downloads');
 
 module.exports = [
-	{
-		name: 'Delete .dmg from Downloads',
-		key: 'dmg-downloads',
-		probe: () =>
-			getFolderSize(`${os.homedir()}/Downloads`, {
-				filter: line => line.endsWith('.dmg')
-			}),
-		command: `rm -rfv ${glob
-			.sync(`${os.homedir()}/Downloads/**/*.dmg`)
-			.concat(glob.sync(`${os.homedir()}/Downloads/*.dmg`))
-			.map(s => `"${s}"`)
-			.join(' ')}`
-	},
-
+	dmgDownloads,
 	brewCleanup,
 	{
 		name: 'Empty trash',
