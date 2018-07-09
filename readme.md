@@ -6,7 +6,11 @@ _BETA NOTICE_: This module is still in development and in an early stage. Be car
 
 > Free up space from the command line
 
-## Use
+- Fast, lightweight, simple
+- A special focus on developers
+- No installation needed
+
+## How to use
 
 ```
 $ npx make-space
@@ -20,37 +24,12 @@ With npx, you don't have to install the tool, saving you more space. And wheneve
 <details>
 	<summary>I don't have <code>npx</code>!</summary>
 	The <code>npx</code> binary is included with npm 5.2 and above. You can also install make-space with yarn:
-	<pre>
-	<code>
-	yarn add --global make-space<br/>
-	make-space
-	</code>
-	</pre>
+	<pre><code>$ yarn add --global make-space<br/>$ make-space</code></pre>
 </details>
 
-## Have ideas on how to free space
+## What ideas do you have to make space?
 
-## CLI
-
-```
-$ npm install --global make-space
-```
-
-```
-$ make-space --help
-
-  Usage
-    make-space [input]
-
-  Options
-    --foo  Lorem ipsum [Default: false]
-
-  Examples
-    $ make-space
-    unicorns & rainbows
-    $ make-space ponies
-    ponies & rainbows
-```
+Feel free to send us pull requests with new strategies to free even more space!
 
 ## License
 
