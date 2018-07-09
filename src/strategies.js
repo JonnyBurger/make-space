@@ -22,6 +22,12 @@ module.exports = [
 		command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/Archives`
 	},
 	{
+		name: 'Empty trash',
+		key: 'empty-trash',
+		probe: () => getFolderSize(`${os.homedir()}/.Trash`),
+		command: `rm -rfv ${os.homedir()}/.Trash`
+	},
+	{
 		name: 'Delete npm cache',
 		key: 'npm-cache',
 		probe: () => getFolderSize(`${os.homedir()}/.npm`),
@@ -39,34 +45,6 @@ module.exports = [
 			return p;
 		}),
 		command: `yarn cache clean`
-	},
-	{
-		name: 'Delete Premiere caches',
-		key: 'premiere-cache',
-		command: `rm -rfv "${os.homedir()}/Library/Caches/Adobe/Premiere Pro"`,
-		probe: () =>
-			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/Premiere Pro`)
-	},
-	dmgDownloads,
-	brewCleanup,
-	{
-		name: 'Empty trash',
-		key: 'empty-trash',
-		probe: () => getFolderSize(`${os.homedir()}/.Trash`),
-		command: `rm -rfv ${os.homedir()}/.Trash`
-	},
-	{
-		name: 'Random command, should fail',
-		key: 'test-fail',
-		command: 'fsdfdsfds',
-		probe: () => getFolderSize(`fskajdölfjdslakfjdas`)
-	},
-	{
-		name: 'Clear After Effects disk cache',
-		key: 'after-effects-caches',
-		command: 'rm -rfv ~/Library/Caches/Adobe/After Effects',
-		probe: () =>
-			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/After Effects`)
 	},
 	{
 		name: 'Delete dangling Docker images',
@@ -87,5 +65,24 @@ module.exports = [
 			return size.reduce((a, b) => a + b, 0);
 		},
 		command: 'docker rmi $(docker images -f dangling=true -q)'
-	}
+	},
+	dmgDownloads,
+	/*
+	{
+		name: 'Delete Premiere caches',
+		key: 'premiere-cache',
+		command: `rm -rfv "${os.homedir()}/Library/Caches/Adobe/Premiere Pro"`,
+		probe: () =>
+			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/Premiere Pro`)
+	},
+	*/
+
+	{
+		name: 'Clear After Effects disk cache',
+		key: 'after-effects-caches',
+		command: 'rm -rfv ~/Library/Caches/Adobe/After Effects',
+		probe: () =>
+			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/After Effects`)
+	},
+	brewCleanup
 ];
