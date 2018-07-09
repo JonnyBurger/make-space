@@ -4,7 +4,9 @@ _BETA NOTICE_: This module is still in development and in an early stage. Be car
 
 # make-space [![Build Status](https://travis-ci.org/JonnyBurger/make-space.svg?branch=master)](https://travis-ci.org/JonnyBurger/make-space)
 
-> Free up space from the command line
+<p align="center">
+  <img width="600" src="zoom.gif">
+</p>
 
 - Fast, lightweight, simple
 - A special focus on developers
