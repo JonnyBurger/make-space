@@ -15,6 +15,13 @@ module.exports = [
 		command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/DerivedData`
 	},
 	{
+		name: 'Delete Xcode Archives',
+		key: 'xcode-archives',
+		probe: () =>
+			getFolderSize(`${os.homedir()}/Library/Developer/Xcode/Archives`),
+		command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/Archives`
+	},
+	{
 		name: 'Delete npm cache',
 		key: 'npm-cache',
 		probe: () => getFolderSize(`${os.homedir()}/.npm`),
