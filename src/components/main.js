@@ -1,6 +1,5 @@
 const {h, Component, Fragment, Color} = require('ink');
 const {sum, max} = require('lodash');
-const Gradient = require('ink-gradient');
 const Spinner = require('ink-spinner');
 const figures = require('figures');
 const prettyBytes = require('pretty-bytes');
@@ -54,15 +53,14 @@ class Main extends Component {
 				stopped: true
 			});
 		}
+		if (key.name === 'c' && key.ctrl) {
+			process.exit(0);
+		}
 	}
 	render() {
 		return (
 			<Fragment>
 				<div />
-				<div>
-					{' '.repeat(2)}
-					<Gradient name="teen">make-space</Gradient>
-				</div>
 				<div>
 					{' '.repeat(2)}
 					You can save up to{' '}
