@@ -43,7 +43,7 @@ module.exports = [
 	{
 		name: 'Delete Premiere caches',
 		key: 'premiere-cache',
-		command: 'rm -rfv ~/Library/Caches/Adobe/Premiere Pro',
+		command: `rm -rfv "${os.homedir()}/Library/Caches/Adobe/Premiere Pro"`,
 		probe: () =>
 			getFolderSize(`${os.homedir()}/Library/Caches/Adobe/Premiere Pro`)
 	},
