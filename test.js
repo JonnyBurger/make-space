@@ -13,5 +13,6 @@ test('All strategies should have same structure', t => {
 		t.true(typeof strategies[k].name === 'string');
 		t.true(typeof strategies[k].probe === 'function');
 		t.true(typeof strategies[k].command === 'string');
+		t.true(typeof strategies[k].feasible === 'string');
 	});
 });
