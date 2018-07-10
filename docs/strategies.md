@@ -1,7 +1,6 @@
 ---
 id: strategies
 title: Strategy overview
-sidebar_label: Overview
 ---
 
 **[after-effects-caches](after-effects-caches)**
