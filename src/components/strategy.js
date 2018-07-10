@@ -66,6 +66,11 @@ class Strategy extends Component {
 							.substr(0, 70)
 							.replace(/\n/g, '')}
 					</Color>
+				) : this.props.mode === 'docs' ? (
+					<span>
+						<Color gray>make-space.sh/docs/</Color>
+						<Color dim>{this.props.strategy.key}</Color>
+					</span>
 				) : (
 					<span>
 						<Color gray>$</Color>{' '}
