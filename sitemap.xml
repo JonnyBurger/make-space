@@ -8,10 +8,10 @@
 <url> <loc>https://make-space.sh/blog/2017/09/25/testing-rss.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://make-space.sh/blog/2017/04/10/blog-post-two.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://make-space.sh/blog/2016/03/11/blog-post.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
+<url> <loc>https://make-space.sh/docs/after-effects-caches.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/after-effects-caches.html" /> </url>
 <url> <loc>https://make-space.sh/docs/brew-cleanup.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/brew-cleanup.html" /> </url>
-<url> <loc>https://make-space.sh/docs/doc1.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/doc1.html" /> </url>
-<url> <loc>https://make-space.sh/docs/doc2.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/doc2.html" /> </url>
-<url> <loc>https://make-space.sh/docs/doc3.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/doc3.html" /> </url>
+<url> <loc>https://make-space.sh/docs/dmg-downloads.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/dmg-downloads.html" /> </url>
+<url> <loc>https://make-space.sh/docs/docker-dangling.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/docker-dangling.html" /> </url>
 <url> <loc>https://make-space.sh/docs/empty-trash.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/empty-trash.html" /> </url>
 <url> <loc>https://make-space.sh/docs/npm-cache.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/npm-cache.html" /> </url>
 <url> <loc>https://make-space.sh/docs/xcode-archives.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/xcode-archives.html" /> </url>
