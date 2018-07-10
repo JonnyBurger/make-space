@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -7,5 +8,11 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	target: 'node',
-	mode: 'development'
+	mode: 'development',
+	plugins: [
+		new webpack.BannerPlugin({
+			banner: '#!/usr/bin/env node',
+			raw: true
+		})
+	]
 };
