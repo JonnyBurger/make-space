@@ -39,7 +39,8 @@ const siteConfig = {
 	// For no header links in the top nav bar -> headerLinks: [],
 	headerLinks: [
 		{doc: 'brew-cleanup', label: 'Docs'},
-		{page: 'help', label: 'Help'}
+		{doc: 'strategies', label: 'Strategies'},
+		{href: 'https://github.com/JonnyBurger/make-space', label: 'GitHub'}
 	],
 
 	// If you have users set above, you add it here:
