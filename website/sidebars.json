@@ -1,0 +1,17 @@
+{
+	"docs": {
+		"make-space": ["get-started"],
+		"Strategies": [
+			"strategies",
+			"after-effects-caches",
+			"brew-cleanup",
+			"dmg-downloads",
+			"docker-dangling",
+			"empty-trash",
+			"npm-cache",
+			"xcode-archives",
+			"xcode-deriveddata",
+			"yarn-cache"
+		]
+	}
+}
