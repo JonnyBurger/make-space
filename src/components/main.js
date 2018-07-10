@@ -19,7 +19,8 @@ class Main extends Component {
 			progress: {},
 			stopped: false,
 			checked: [],
-			submitted: false
+			submitted: false,
+			row: 'command'
 		};
 	}
 	componentDidMount() {
@@ -64,6 +65,11 @@ class Main extends Component {
 				stopped: true
 			});
 		}
+		if (key.name === 'd') {
+			this.setState({
+				mode: this.state.mode === 'docs' ? 'command' : 'docs'
+			});
+		}
 		if (key.name === 'c' && key.ctrl) {
 			process.exit(0);
 		}
@@ -99,9 +105,11 @@ class Main extends Component {
 						{this.doneSearching ? (
 							<Color gray>
 								({figures.arrowDown} {figures.arrowUp}) Move up / down
-								{' '.repeat(8)}
+								{' '.repeat(6)}
 								(space) Select item
-								{' '.repeat(8)}
+								{' '.repeat(6)}
+								(d) Show {this.state.mode === 'docs' ? 'commands' : 'docs'}
+								{' '.repeat(6)}
 								(enter) Execute
 							</Color>
 						) : (
@@ -134,7 +142,8 @@ class Main extends Component {
 						disabled:
 							!this.state.progress[strategy.key] ||
 							!this.state.progress[strategy.key].final ||
-							this.state.progress[strategy.key].err || !this.state.progress[strategy.key].size,
+							this.state.progress[strategy.key].err ||
+							!this.state.progress[strategy.key].size,
 						checked: this.state.checked.includes(strategy.key),
 						key: strategy.key,
 						content: (
@@ -142,6 +151,7 @@ class Main extends Component {
 								<Strategy
 									progress={this.state.progress[strategy.key]}
 									strategy={strategy}
+									mode={this.state.mode}
 									onStart={() => {
 										this.setState({
 											progress: Object.assign({}, this.state.progress, {

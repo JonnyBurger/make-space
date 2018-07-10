@@ -26,4 +26,8 @@ Once the search phase is done or has been stopped, you can use <kbd>↑</kbd> an
 
 If you have made your selection, press <kbd>↵</kbd> to execute the strategies.
 
+You can press <kbd>d</kbd> to show the documentation links of each command.
+
+> In iTerm, you can Cmd+Click to open a URL in the browser!
+
 At all times, you can press <kbd>Ctrl</kbd>+<kbd>C</kbd> to quit the tool.
