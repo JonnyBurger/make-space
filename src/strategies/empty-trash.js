@@ -5,5 +5,6 @@ module.exports = {
 	name: 'Empty trash',
 	key: 'empty-trash',
 	probe: () => getFolderSize(`${os.homedir()}/.Trash`),
-	command: `rm -rfv ${os.homedir()}/.Trash`
+	command: `rm -rfv ${os.homedir()}/.Trash`,
+	feasible: `ls ${os.homedir()}/.Trash`
 };

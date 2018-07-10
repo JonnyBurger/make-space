@@ -19,5 +19,6 @@ module.exports = {
 			.map(b => bytes.parse(b.toLowerCase()));
 		return size.reduce((a, b) => a + b, 0);
 	},
+	feasible: 'docker --version',
 	command: 'docker rmi $(docker images -f dangling=true -q)'
 };

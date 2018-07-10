@@ -5,5 +5,6 @@ module.exports = {
 	name: 'Delete npm cache',
 	key: 'npm-cache',
 	probe: () => getFolderSize(`${os.homedir()}/.npm`),
-	command: `rm -rfv ${os.homedir()}/.npm`
+	command: `rm -rfv ${os.homedir()}/.npm`,
+	feasible: `ls ${os.homedir()}/.npm`
 };

@@ -49,16 +49,12 @@ class Strategy extends Component {
 				) : (
 					<span> </span>
 				)}
-				{this.progress.size ? (
-					<Color
-						gray={!this.progress.final || this.progress.err}
-						blue={this.progress.final && !this.progress.err}
-					>
-						{padStart(prettyBytes(this.progress.size), 9, ' ')}
-					</Color>
-				) : (
-					<Fragment>{' '.repeat(9)}</Fragment>
-				)}
+				<Color
+					gray={!this.progress.final || this.progress.err}
+					blue={this.progress.final && !this.progress.err}
+				>
+					{padStart(prettyBytes(this.progress.size || 0), 9, ' ')}
+				</Color>
 				{'  '}
 				<Color gray={this.progress.err}>
 					{padEnd(this.props.strategy.name, this.props.nameWidth + 2, ' ')}{' '}
@@ -72,8 +68,8 @@ class Strategy extends Component {
 					</Color>
 				) : (
 					<span>
-						<Color dim>$</Color>{' '}
-						<Color gray>{this.props.strategy.command.substr(0, 70)}</Color>
+						<Color gray>$</Color>{' '}
+						<Color dim>{this.props.strategy.command.substr(0, 70)}</Color>
 					</span>
 				)}
 			</Fragment>

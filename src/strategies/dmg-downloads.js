@@ -19,5 +19,6 @@ module.exports = {
 		getFolderSize(`${homedir}/Downloads`, {
 			filter: line => line.endsWith('.dmg')
 		}),
+	feasible: `ls ${homedir}/Downloads`,
 	command
 };

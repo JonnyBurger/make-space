@@ -7,6 +7,7 @@ const PProgress = require('../helpers/p-progress');
 module.exports = {
 	name: 'Cleanup Homebrew',
 	key: 'brew-cleanup',
+	feasible: 'hash brew',
 	probe: () => {
 		return new PProgress((resolve, reject, progress) => {
 			let cleanup = null;

@@ -6,5 +6,6 @@ module.exports = {
 	key: 'xcode-deriveddata',
 	probe: () =>
 		getFolderSize(`${os.homedir()}/Library/Developer/Xcode/DerivedData`),
-	command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/DerivedData`
+	command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/DerivedData`,
+	feasible: `ls ${os.homedir()}/Library/Developer/Xcode/DerivedData`
 };

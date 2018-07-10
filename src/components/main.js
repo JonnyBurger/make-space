@@ -3,8 +3,10 @@ const {sum, max} = require('lodash');
 const Spinner = require('ink-spinner');
 const figures = require('figures');
 const prettyBytes = require('pretty-bytes');
+const pFilter = require('p-filter');
 const execute = require('../execute');
 const strategies = require('../strategies');
+const isStrategyFeasible = require('../helpers/is-strategy-feasible');
 const List = require('../helpers/ink-checkbox-list/list');
 const ListItem = require('../helpers/ink-checkbox-list/list-item');
 const Strategy = require('./strategy');
@@ -13,7 +15,7 @@ class Main extends Component {
 	constructor() {
 		super();
 		this.state = {
-			strategies,
+			strategies: null,
 			progress: {},
 			stopped: false,
 			checked: [],
@@ -21,6 +23,15 @@ class Main extends Component {
 		};
 	}
 	componentDidMount() {
+		pFilter(strategies, s => {
+			return isStrategyFeasible(s);
+		})
+			.then(s => {
+				this.setState({strategies: s});
+			})
+			.catch(err => {
+				console.log(err);
+			});
 		this._stopHandler = this.stopHandler.bind(this);
 		process.stdin.on('keypress', this._stopHandler);
 	}
@@ -58,6 +69,16 @@ class Main extends Component {
 		}
 	}
 	render() {
+		if (!this.state.strategies) {
+			return (
+				<Fragment>
+					<div />
+					<div>
+						<Spinner />
+					</div>
+				</Fragment>
+			);
+		}
 		return (
 			<Fragment>
 				<div />
@@ -113,7 +134,7 @@ class Main extends Component {
 						disabled:
 							!this.state.progress[strategy.key] ||
 							!this.state.progress[strategy.key].final ||
-							this.state.progress[strategy.key].err,
+							this.state.progress[strategy.key].err || !this.state.progress[strategy.key].size,
 						checked: this.state.checked.includes(strategy.key),
 						key: strategy.key,
 						content: (

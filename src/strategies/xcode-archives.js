@@ -6,5 +6,6 @@ module.exports = {
 	key: 'xcode-archives',
 	probe: () =>
 		getFolderSize(`${os.homedir()}/Library/Developer/Xcode/Archives`),
-	command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/Archives`
+	command: `rm -rfv ${os.homedir()}/Library/Developer/Xcode/Archives`,
+	feasible: `ls ${os.homedir()}/Library/Developer/Xcode/Archives`
 };
