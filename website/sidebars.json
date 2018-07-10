@@ -1,8 +1,7 @@
 {
 	"docs": {
-		"make-space": ["get-started"],
+		"make-space": ["get-started", "strategies", "contributing"],
 		"Strategies": [
-			"strategies",
 			"after-effects-caches",
 			"brew-cleanup",
 			"dmg-downloads",
