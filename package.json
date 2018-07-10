@@ -9,7 +9,7 @@
     "email": "jonathanburger11@gmail.com",
     "url": "https://jonny.io"
   },
-  "bin": "dist/cli.js",
+  "bin": "bundled/bundle.js",
   "engines": {
     "node": ">=4"
   },
@@ -17,10 +17,10 @@
     "test": "eslint '**/*.js' --ignore-path=.gitignore && ava",
     "start": "npm run build && node dist/cli.js",
     "build": "babel src -d dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && webpack"
   },
   "files": [
-    "dist"
+    "bundled"
   ],
   "keywords": [
     "cli-app",
@@ -39,20 +39,21 @@
     "ink-spinner": "^2.0.0",
     "inquirer": "^6.0.0",
     "lodash": "^4.17.10",
-    "meow": "^3.7.0",
     "ms": "^2.1.1",
     "p-map": "^1.2.0",
     "percentage": "^0.1.0",
     "pretty-bytes": "^5.1.0",
     "react": "^16.4.0",
-    "splitargs": "0.0.7"
+    "splitargs": "0.0.7",
+    "webpack": "^4.15.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "eslint": "^5.1.0",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "webpack-cli": "^3.0.8"
   },
   "babel": {
     "plugins": [
