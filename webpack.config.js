@@ -8,7 +8,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	target: 'node',
-	mode: 'development',
+	mode: 'production',
 	plugins: [
 		new webpack.BannerPlugin({
 			banner: '#! /usr/bin/env node',
