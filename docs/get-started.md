@@ -16,6 +16,8 @@ This will download the package from npm and execute it right away. If you don't 
 
 > By using npx, you don't have to install the tool, saving you more space! You also always get the newest version, so when new strategies are added, you'll always have them.
 
+> Currently, it only works with Node.js 8 or higher!
+
 ## Usage
 
 Upon execution, `make-space` will inspect your file system and suggest you things you can do to free up space.
