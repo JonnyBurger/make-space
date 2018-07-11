@@ -8,5 +8,5 @@ branches:
 script:
   - git config --global user.name "Jonny Burger"
   - git config --global user.email "hi@jonny.io"
-  - echo "machine github.com login JonnyBurger passwort ${GH_TOKEN}" > ~/.netrc
+  - echo "machine github.com login JonnyBurger password ${GH_TOKEN}" > ~/.netrc
   - cd website && npm install && GIT_USER=JonnyBurger npm run publish-gh-pages
