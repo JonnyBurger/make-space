@@ -14,7 +14,15 @@ Clear After Effects Disk Cache
 
 **[empty-trash](empty-trash)** Empty trash
 
+**[ethereum-chaindata](ethereum-chaindata)** Delete Ethereum mainnet chain data
+
+**[ethereum-chaindata-testnet](ethereum-chaindata-testnet)** Delete Ethereum testnet chain data
+
+**[litecoin-chaindata-testnet](litecoin-chaindata-testnet)** Delete Litecoin chain data
+
 **[npm-cache](npm-cache)** Clear npm cache
+
+**[spotify-cache](spotify-cache)** Clear Spotify cache
 
 **[xcode-archives](xcode-archives)** Delete Xcode archives
 
