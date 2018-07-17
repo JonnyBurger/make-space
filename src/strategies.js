@@ -7,5 +7,7 @@ module.exports = [
 	require('./strategies/docker-dangling'),
 	require('./strategies/dmg-downloads'),
 	require('./strategies/after-effects-caches'),
-	require('./strategies/brew-cleanup')
+	require('./strategies/brew-cleanup'),
+	require('./strategies/ethereum-chaindata'),
+	require('./strategies/ethereum-chaindata-testnet')
 ];

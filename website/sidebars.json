@@ -7,6 +7,8 @@
 			"dmg-downloads",
 			"docker-dangling",
 			"empty-trash",
+			"ethereum-chaindata",
+			"ethereum-chaindata-testnet",
 			"npm-cache",
 			"xcode-archives",
 			"xcode-deriveddata",
