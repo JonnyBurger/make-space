@@ -9,5 +9,6 @@ module.exports = [
 	require('./strategies/after-effects-caches'),
 	require('./strategies/brew-cleanup'),
 	require('./strategies/ethereum-chaindata'),
-	require('./strategies/ethereum-chaindata-testnet')
+	require('./strategies/ethereum-chaindata-testnet'),
+	require('./strategies/spotify-cache')
 ];

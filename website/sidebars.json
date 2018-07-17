@@ -10,6 +10,7 @@
 			"ethereum-chaindata",
 			"ethereum-chaindata-testnet",
 			"npm-cache",
+			"spotify-cache",
 			"xcode-archives",
 			"xcode-deriveddata",
 			"yarn-cache"
