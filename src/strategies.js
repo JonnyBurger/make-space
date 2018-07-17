@@ -10,5 +10,6 @@ module.exports = [
 	require('./strategies/brew-cleanup'),
 	require('./strategies/ethereum-chaindata'),
 	require('./strategies/ethereum-chaindata-testnet'),
-	require('./strategies/spotify-cache')
+	require('./strategies/spotify-cache'),
+	require('./strategies/litecoin-chaindata')
 ];

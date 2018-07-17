@@ -30,3 +30,4 @@ This strategy concerns the chain data of the testnet. For mainnet, see
 - [If I delete chaindata do I lose the ether in my wallet?](https://www.reddit.com/r/ethereum/comments/69py8q/if_i_delete_chaindata_do_i_lose_the_ether_in_my/)
 
 - [ethereum-chaindata](ethereum-chaindata)
+- [litecoin-chaindata](litecoin-chaindata)
