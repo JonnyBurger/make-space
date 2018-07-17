@@ -6,12 +6,11 @@
  */
 
 const React = require('react');
-
+const {Fragment} = React;
 const CompLibrary = require('../../core/CompLibrary.js');
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
-
 const siteConfig = require(process.cwd() + '/siteConfig.js');
 
 function imgUrl(img) {
@@ -57,10 +56,15 @@ const Logo = props => (
 );
 
 const ProjectTitle = () => (
-	<h2 className="projectTitle">
-		{siteConfig.title}
-		<small>{siteConfig.tagline}</small>
-	</h2>
+	<Fragment>
+		<h2 className="projectTitle" style={{marginBottom: 0}}>
+			{siteConfig.title}
+			<small style={{marginBottom: 20}}>{siteConfig.tagline}</small>
+		</h2>
+		Try it out now. Simply type:{'   '}
+		<code className="code-block">npx make-space</code>
+		<div style={{marginBottom: 10}} />
+	</Fragment>
 );
 
 const PromoSection = props => (
@@ -76,15 +80,15 @@ class HomeSplash extends React.Component {
 		let language = this.props.language || '';
 		return (
 			<SplashContainer>
-				<Logo img_src={imgUrl('docusaurus.svg')} />
+				<Logo img_src={imgUrl('trashcan.png')} />
 				<div className="inner">
 					<ProjectTitle />
 					<PromoSection>
 						<Button href={docUrl('get-started.html', language)}>
-							Try it out
+							Get started
 						</Button>
 						<Button href={docUrl('strategies.html', language)}>
-							Documentation
+							Strategies
 						</Button>
 					</PromoSection>
 				</div>
@@ -107,16 +111,17 @@ const Features = () => (
 	<Block layout="fourColumn">
 		{[
 			{
-				content: 'This is the content of my feature',
-				image: imgUrl('docusaurus.svg'),
+				content: 'Finds clutter on your Mac and sends it into the void.',
+				image: imgUrl('trashcan.png'),
 				imageAlign: 'top',
-				title: 'Feature One'
+				title: 'Cleans like a black hole'
 			},
 			{
-				content: 'The content of my second feature',
-				image: imgUrl('docusaurus.svg'),
+				content:
+					'Less than 1 MB of space required - downloads and runs in just 5 seconds!',
+				image: imgUrl('trashcan.png'),
 				imageAlign: 'top',
-				title: 'Feature Two'
+				title: 'Launches like a rocket'
 			}
 		]}
 	</Block>
@@ -137,7 +142,7 @@ const LearnHow = () => (
 		{[
 			{
 				content: 'Talk about learning how to use this',
-				image: imgUrl('docusaurus.svg'),
+				image: imgUrl('trashcan.png'),
 				imageAlign: 'right',
 				title: 'Learn How'
 			}
@@ -150,7 +155,7 @@ const TryOut = () => (
 		{[
 			{
 				content: 'Talk about trying this out',
-				image: imgUrl('docusaurus.svg'),
+				image: imgUrl('trashcan.png'),
 				imageAlign: 'left',
 				title: 'Try it Out'
 			}
@@ -163,7 +168,7 @@ const Description = () => (
 		{[
 			{
 				content: 'This is another description of how this project is useful',
-				image: imgUrl('docusaurus.svg'),
+				image: imgUrl('trashcan.png'),
 				imageAlign: 'right',
 				title: 'Description'
 			}
@@ -210,11 +215,13 @@ class Index extends React.Component {
 				<HomeSplash language={language} />
 				<div className="mainContainer">
 					<Features />
+					{/*
 					<FeatureCallout />
 					<LearnHow />
 					<TryOut />
 					<Description />
 					<Showcase language={language} />
+					*/}
 				</div>
 			</div>
 		);

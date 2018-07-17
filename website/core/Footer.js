@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
+ * Copyright (c) 2017-present, Jonny Burger, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -72,14 +72,14 @@ class Footer extends React.Component {
 				</section>
 
 				<a
-					href="https://code.facebook.com/projects/"
+					href="https://jonny.io/"
 					target="_blank"
 					rel="noreferrer noopener"
 					className="fbOpenSource"
 				>
 					<img
-						src={this.props.config.baseUrl + 'img/oss_logo.png'}
-						alt="Facebook Open Source"
+						src={this.props.config.baseUrl + 'img/jonnyburger.png'}
+						alt="Jonny Burger"
 						width="170"
 						height="45"
 					/>

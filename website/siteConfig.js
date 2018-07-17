@@ -21,22 +21,13 @@ const users = [
 ];
 
 const siteConfig = {
-	title: 'make-space' /* title for your website */,
-	tagline: 'The simplest way to free space on your Mac',
-	url: 'https://make-space.sh' /* your website url */,
-	baseUrl: '/' /* base url for your project */,
-	// For github.io type URLs, you would set the url and baseUrl like:
-	//   url: 'https://facebook.github.io',
-	//   baseUrl: '/test-site/',
+	title: 'make-space',
+	tagline: 'Free up space from your command line',
+	url: 'https://make-space.sh',
+	baseUrl: '/',
 
-	// Used for publishing and more
 	projectName: 'make-space',
 	organizationName: 'JonnyBurger',
-	// For top-level user or org sites, the organization is still the same.
-	// e.g., for the https://JoelMarcey.github.io site, it would be set like...
-	//   organizationName: 'JoelMarcey'
-
-	// For no header links in the top nav bar -> headerLinks: [],
 	headerLinks: [
 		{doc: 'brew-cleanup', label: 'Docs'},
 		{doc: 'strategies', label: 'Strategies'},
@@ -47,8 +38,8 @@ const siteConfig = {
 	users,
 
 	/* path to images for header/footer */
-	headerIcon: 'img/docusaurus.svg',
-	footerIcon: 'img/docusaurus.svg',
+	headerIcon: 'img/trashcan.png',
+	footerIcon: 'img/trashcan.png',
 	favicon: 'img/favicon.png',
 
 	/* colors for website */
@@ -78,14 +69,18 @@ const siteConfig = {
 	},
 
 	// Add custom scripts here that would be placed in <script> tags
-	scripts: ['https://buttons.github.io/buttons.js'],
+	scripts: [
+		'https://buttons.github.io/buttons.js',
+		'https://code.jquery.com/jquery-3.3.1.slim.min.js',
+		'/js/app.js'
+	],
 
 	/* On page navigation for the current documentation page */
 	onPageNav: 'separate',
 
 	/* Open Graph and Twitter card images */
-	ogImage: 'img/docusaurus.png',
-	twitterImage: 'img/docusaurus.png',
+	ogImage: 'img/trashcan.png',
+	twitterImage: 'img/trashcan.png',
 
 	// You may provide arbitrary config keys to be used as needed by your
 	// template. For example, if you need your repo's URL...
