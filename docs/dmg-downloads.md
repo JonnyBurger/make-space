@@ -10,6 +10,10 @@ sidebar_label: dmg-downloads
 
 ## Command
 
+See [source code](https://github.com/JonnyBurger/make-space/blob/master/src/strategies/dmg-downloads.js).
+
+## Description
+
 Removes all .dmg files from the Downloads folder.
 
 DMG files contain applications, which you usually move into the Applications folder.
