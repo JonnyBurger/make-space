@@ -13,6 +13,6 @@ module.exports = {
 		});
 		return p;
 	}),
-	feasible: 'yarn --version',
+	feasible: 'which yarn',
 	command: `yarn cache clean`
 };
