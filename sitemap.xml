@@ -18,5 +18,6 @@
 <url> <loc>https://make-space.sh/docs/strategies.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/strategies.html" /> </url>
 <url> <loc>https://make-space.sh/docs/xcode-archives.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/xcode-archives.html" /> </url>
 <url> <loc>https://make-space.sh/docs/xcode-deriveddata.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/xcode-deriveddata.html" /> </url>
+<url> <loc>https://make-space.sh/docs/xcode-simulators.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/xcode-simulators.html" /> </url>
 <url> <loc>https://make-space.sh/docs/yarn-cache.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://make-space.sh/docs/yarn-cache.html" /> </url>
 </urlset>
