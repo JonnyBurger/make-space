@@ -61,6 +61,10 @@ Here is a list of all strategies that are implemented:
 		<td>Delete Xcode DerivedData folder</td>
 	</tr>
 	<tr>
+		<td><strong><a href="xcode-simulators">xcode-simulators</a></strong></td>
+		<td>Delete unavailable Xcode simulators</td>
+	</tr>
+	<tr>
 		<td><strong><a href="yarn-cache">yarn-cache</a></strong></td>
 		<td>Clear Yarn cache</td>
 	</tr>

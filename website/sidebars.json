@@ -14,6 +14,7 @@
 			"spotify-cache",
 			"xcode-archives",
 			"xcode-deriveddata",
+			"xcode-simulators",
 			"yarn-cache"
 		]
 	}
