@@ -1,5 +1,6 @@
 module.exports = [
 	require('./strategies/xcode-deriveddata'),
+	require('./strategies/xcode-simulators'),
 	require('./strategies/xcode-archives'),
 	require('./strategies/empty-trash'),
 	require('./strategies/npm-cache'),
