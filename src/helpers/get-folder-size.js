@@ -1,13 +1,13 @@
 const rl = require('readline');
 const execa = require('execa');
-const PProgress = require('./p-progress');
+const ProgressProgress = require('./p-progress');
 
 const getSize = number => {
 	return parseInt(number.replace(/,/g, '.'), 10) * 1024;
 };
 
 module.exports = (dir, {filter = Boolean} = {}) => {
-	return new PProgress((resolve, reject, progress) => {
+	return new ProgressProgress((resolve, reject, progress) => {
 		let cleanup = null;
 		let interval = null;
 		let reader = null;
