@@ -21,10 +21,6 @@ Here is a list of all strategies that are implemented:
 		<td>Clean up Homebrew</td>
 	</tr>
 	<tr>
-		<td><strong><a href="dmg-downloads">dmg-downloads</a></strong></td>
-		<td>Remove .dmg files from Downloads</td>
-	</tr>
-	<tr>
 		<td><strong><a href="docker-dangling">docker-dangling</a></strong></td>
 		<td>Remove dangling docker images</td>
 	</tr>

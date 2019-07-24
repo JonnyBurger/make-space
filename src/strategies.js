@@ -6,7 +6,6 @@ module.exports = [
 	require('./strategies/npm-cache'),
 	require('./strategies/yarn-cache'),
 	require('./strategies/docker-dangling'),
-	require('./strategies/dmg-downloads'),
 	require('./strategies/after-effects-caches'),
 	require('./strategies/brew-cleanup'),
 	require('./strategies/ethereum-chaindata'),
