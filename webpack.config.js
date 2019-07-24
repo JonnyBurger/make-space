@@ -9,6 +9,7 @@ module.exports = {
 	},
 	target: 'node',
 	mode: 'production',
+	devtool: 'source-map',
 	plugins: [
 		new webpack.BannerPlugin({
 			banner: '#! /usr/bin/env node',
