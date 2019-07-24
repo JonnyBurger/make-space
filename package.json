@@ -1,6 +1,6 @@
 {
   "name": "make-space",
-  "version": "0.1.25",
+  "version": "0.1.24",
   "description": "Free up hard disk space",
   "license": "MIT",
   "repository": "JonnyBurger/make-space",
@@ -38,8 +38,8 @@
       ]
     ]
   },
-  "_dependencies": {},
-  "_devDependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
