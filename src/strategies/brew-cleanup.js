@@ -1,6 +1,6 @@
 const rl = require('readline');
 const bytes = require('bytes');
-const {last} = require('lodash');
+const last = require('lodash.last');
 const execa = require('execa');
 const PProgress = require('../helpers/p-progress');
 

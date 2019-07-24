@@ -1,5 +1,6 @@
 const {h, Component, Fragment, Color} = require('ink');
-const {sum, max} = require('lodash');
+const sum = require('lodash.sum');
+const max = require('lodash.max');
 const Spinner = require('ink-spinner');
 const figures = require('figures');
 const prettyBytes = require('pretty-bytes');
@@ -24,10 +25,12 @@ class Main extends Component {
 		};
 	}
 	componentDidMount() {
+		console.time('Checking strategy feasability');
 		pFilter(strategies, s => {
 			return isStrategyFeasible(s);
 		})
 			.then(s => {
+				console.timeEnd('Checking strategy feasability');
 				this.setState({strategies: s});
 			})
 			.catch(err => {

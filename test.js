@@ -1,5 +1,5 @@
 const test = require('ava');
-const {uniq} = require('lodash');
+const uniq = require('lodash.uniq');
 const strategies = require('./src/strategies');
 
 test('All strategies should have a unique key', t => {

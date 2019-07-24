@@ -1,5 +1,5 @@
 const os = require('os');
-const {flatten} = require('lodash');
+const flatten = require('lodash.flatten');
 const execa = require('execa');
 const getFolderSize = require('../helpers/get-folder-size');
 const PProgress = require('../helpers/p-progress');
