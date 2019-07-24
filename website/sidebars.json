@@ -4,7 +4,6 @@
 		"Strategies": [
 			"after-effects-caches",
 			"brew-cleanup",
-			"dmg-downloads",
 			"docker-dangling",
 			"empty-trash",
 			"ethereum-chaindata",
