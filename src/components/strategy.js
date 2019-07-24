@@ -1,7 +1,7 @@
 const {h, Component, Color, Fragment} = require('ink');
 const Spinner = require('ink-spinner');
 const padStart = require('lodash.padstart');
-const padend = require('lodash.padend');
+const padEnd = require('lodash.padend');
 const prettyBytes = require('pretty-bytes');
 
 class Strategy extends Component {
