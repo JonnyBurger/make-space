@@ -30,5 +30,9 @@ module.exports = {
 				}
 			}
 		}
-	]
+	],
+	globals: {
+		$: true,
+		document: true
+	}
 };

@@ -47,7 +47,7 @@
     "chalk": "^2.4.1",
     "colors.js": "^1.2.4",
     "eslint": "^5.1.0",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-react": "^7.14.3",
     "execa": "^0.10.0",
     "figures": "^2.0.0",
     "get-stream": "^3.0.0",
